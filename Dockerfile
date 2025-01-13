@@ -4,7 +4,7 @@ FROM node:16
 # Set the working directory
 WORKDIR /app
 
-# Copy package.json and package-lock.json
+# Copy package.json and package-lock.json first
 COPY package*.json ./
 
 # Install dependencies
@@ -16,8 +16,8 @@ COPY . .
 # Build the React application
 RUN npm run build
 
-# Expose the port used by the React development server
+# Expose the port used by the React application
 EXPOSE 3000
 
-# Start the React development server
+# Start the application (use serve instead of npm start for production)
 CMD ["npm", "start"]
